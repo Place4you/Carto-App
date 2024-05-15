@@ -1,17 +1,55 @@
- Color Scheme
-- Primary Color: #8EC6E6
-This light blue pastel color can be used as the primary color for buttons, links, and other interactive elements.
-- Secondary Color: #BFD7EA
-A slightly darker shade of blue pastel can be used as a secondary color for hover effects, selected states, or as a background color for some elements.
-- Text Color: #333333
-Use a dark gray color for text to ensure readability against the blue background.
-- Background Color: #F5F8FA
-A light off-white or gray background color can provide a subtle contrast to the blue elements and improve readability.
-Here's a breakdown of how you can apply these colors to different elements:
+# Carto v1.0
 
-- Buttons: Use the primary color (#8EC6E6) for the background of buttons and the secondary color (#BFD7EA) for hover effects.
-- Headers: Use a combination of the primary color (#8EC6E6) and the text color (#333333) for headers and titles.
-- Footer: Keep the footer simple with a light background color (#F5F8FA) and dark text color (#333333).
-- Forms: Use the primary color (#8EC6E6) for form elements like input fields and buttons, ensuring good contrast with the background color.
-- Navigation: Use the primary color (#8EC6E6) for navigation links and the secondary color (#BFD7EA) for hover effects.
-*/
+Carto is a Laravel-based social media application that provides all the basic functionalities for users to interact with each other. With Carto, users can sign up, log in, create, edit, and delete posts, follow/unfollow other users, and explore profiles with post histories, follower lists, and following lists.
+
+## Features
+
+- User authentication: Sign up, log in, and log out securely.
+- Post management: Create, edit, and delete posts.
+- User interaction: Follow and unfollow other users.
+- Profile pages: View profiles with user posts, follower lists, and following lists.
+- Authorization: Basic authorization functionalities such as middleware, policies, and type hinting.
+
+## Technologies Used
+
+- Laravel: A powerful PHP framework for building web applications.
+- MySQL: Relational database management system used for data storage.
+- Blade: Laravel's templating engine for generating HTML.
+- JavaScript: Used for client-side interactivity.
+- CSS: Styling the user interface.
+
+## Installation
+
+To run Carto locally, follow these steps:
+
+1. Clone the repository: `git clone https://github.com/your-username/carto.git`
+2. Install dependencies: `composer install`
+3. Create a `.env` file by copying `.env.example` and updating the necessary configurations (database settings, etc.).
+4. Generate an application key: `php artisan key:generate`
+5. Migrate the database: `php artisan migrate`
+6. Serve the application: `php artisan serve`
+
+## Usage
+
+1. Navigate to the application URL in your web browser.
+2. Sign up for a new account or log in with existing credentials.
+3. Explore the various features such as creating/editing/deleting posts, following/unfollowing users, and viewing user profiles.
+
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to Carto, please follow these steps:
+
+1. Fork the repository.
+2. Create a new branch for your feature or bug fix: `git checkout -b feature-name`
+3. Make your changes and commit them: `git commit -m "Add new feature"`
+4. Push to your branch: `git push origin feature-name`
+5. Submit a pull request detailing your changes.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
+## Contact
+
+For any inquiries or support, please contact [sadiraja500@gmail.com].
+
