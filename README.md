@@ -51,5 +51,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or support, please contact [sadiraja500@gmail.com].
+For any inquiries or support, please contact sadiraja500@gmail.com.
 
