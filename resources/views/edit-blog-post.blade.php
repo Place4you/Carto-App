@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="container py-md-5 container--narrow">
+    <div class="container py-md-5 ">
 
         <form action="/post/{{$post->id}}/" method="POST">
           @csrf

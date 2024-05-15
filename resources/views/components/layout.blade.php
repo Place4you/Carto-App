@@ -76,10 +76,25 @@
     {{ $slot }}
 
 
-     <!-- footer begins -->
-     <footer class="border-top text-center small text-muted py-3">
-        <p class="m-0">Copyright &copy; 2024 <a href="/" class="text-muted">Carto</a>. All rights reserved.</p>
-      </footer>
+    <footer class="border-top py-3 fixed-bottom" style="background-color: #3FB3F6; color: white;">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 text-center">
+            <p class="m-0 ">
+              Copyright &copy; 2024 <a href="/" class="text-white">Carto</a>. All rights reserved.
+            </p>
+          </div>
+          <div class="col-md-6 item-end ">
+            <p class="mb-0 float-lg-right text-center  font-weight-bold">
+              Developed with ❤️ by Saadat Ali
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    
+  
+  
   
       <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>

@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div class="container py-md-5 container--narrow">
+    <div class="container py-md-5 ">
         <h2>
             <img class="avatar-small" src="{{ $shareData['avatar']}}" /> 
             <b> 

@@ -1,6 +1,6 @@
 <x-layout>
 
-    <div class="container py-md-5 container--narrow">
+    <div class="container py-md-5 ">
       <h2>
         <img class="avatar-small" src="https://gravatar.com/avatar/b9408a09298632b5151200f3449434ef?s=128" /> brad
         <form class="ml-2 d-inline" action="#" method="POST">
