@@ -1,6 +1,13 @@
 # Carto v1.0
+![Carto ](public/carto-thumnail.JPG)
+
+## Overview
 
 Carto is a Laravel-based social media application that provides all the basic functionalities for users to interact with each other. With Carto, users can sign up, log in, create, edit, and delete posts, follow/unfollow other users, and explore profiles with post histories, follower lists, and following lists.
+
+## Video Preview
+Check out the Detailed version of the project: [Youtube Link](https://bit.ly/4bxezn6)
+
 
 ## Features
 
@@ -26,8 +33,9 @@ To run Carto locally, follow these steps:
 2. Install dependencies: `composer install`
 3. Create a `.env` file by copying `.env.example` and updating the necessary configurations (database settings, etc.).
 4. Generate an application key: `php artisan key:generate`
-5. Migrate the database: `php artisan migrate`
-6. Serve the application: `php artisan serve`
+5. Run `php artisan storage:link`
+6. Migrate the database: `php artisan migrate`
+7. Serve the application: `php artisan serve`
 
 ## Usage
 
@@ -51,5 +59,5 @@ This project is licensed under the [MIT License](LICENSE).
 
 ## Contact
 
-For any inquiries or support, please contact [sadiraja500@gmail.com].
+For any inquiries or support, please contact sadiraja500@gmail.com.
 
