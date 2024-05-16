@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pagetitle="Edit Blogpost">
     <div class="container py-md-5 ">
 
         <form action="/post/{{$post->id}}/" method="POST">

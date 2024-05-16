@@ -1,5 +1,6 @@
-<x-profile :shareData="$shareData">
-  <div class="list-group">
+<x-profile :shareData="$shareData"  pagetitle="{{$shareData['username']}}'s Following List" >
+
+    <div class="list-group">
     @foreach($followers as $follow)
         <a href="/profile/{{ $follow->follower->username }}" class="list-group-item list-group-item-action">
             <img class="avatar-tiny" src="{{ $follow->follower->avatar }}" />

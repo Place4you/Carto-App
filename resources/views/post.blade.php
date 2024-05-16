@@ -1,5 +1,5 @@
    
- <x-layout>  
+ <x-layout :pagetitle="$post->title">  
    <div class="container py-md-5 ">
       <a href="/"><b>&laquo;&laquo; Return back to Home:</b></a>
     <div class="d-flex justify-content-between">

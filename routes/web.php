@@ -41,6 +41,7 @@ Route::post('/manage-avatar', [ProfileController::class,'storeAvatar'])->middlew
 Route::get('/profile/{user:username}/follower',[ProfileController::class,'profileFollower'])->middleware('loggeduser');
 Route::get('/profile/{user:username}/following',[ProfileController::class,'profileFollowing'])->middleware('loggeduser');
 
+// Gate for Admin Only
 Route::get('/admins-only', function(){ return view('admins-only'); })->middleware('can:adminonly');
 
 

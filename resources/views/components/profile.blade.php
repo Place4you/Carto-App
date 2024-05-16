@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout  pagetitle="{{$shareData['username']}}'s Profile">
 
     <div class="container py-md-5 ">
         <h2>
