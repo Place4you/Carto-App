@@ -1,4 +1,4 @@
-<x-profile :shareData="$shareData"  pagetitle="{{$shareData['username']}}'s Following List" >
+<x-profile :shareData="$shareData"  :pagetitle="ucwords($shareData['username']) . '\'s Followers'" >
 
     <div class="list-group">
     @foreach($followers as $follow)

@@ -12,8 +12,19 @@ use Illuminate\Support\Facades\Gate;
 
 class BlogController extends Controller
 {
+
+    //Post search
+    public function search($term)
+    {
+    $post = POST::search($term)->get();
+    $post->load('user:id,username,avatar');
+    return $post;    
+}
+
+
     //Storing the user can Edits in blog post using Policy middleware
-    public function updateBlogpost(Post $post, Request $request) {
+    public function updateBlogpost(Post $post, Request $request)
+    {
         $incomingFields = $request->validate([
             'title' => 'required',
             'body' => 'required',
@@ -24,27 +35,25 @@ class BlogController extends Controller
 
         $post->update($incomingFields);
 
-        return redirect("/post/". $post->id )->with('success','Post is Updated Successfully.');
-
-
+        return redirect("/post/" . $post->id)->with('success', 'Post is Updated Successfully.');
     }
 
 
     //Auth user can edit blog post using Policy middleware
-    public function editBlogpost(Post $post) {
-        return view('edit-blog-post',['post' => $post]);
+    public function editBlogpost(Post $post)
+    {
+        return view('edit-blog-post', ['post' => $post]);
     }
-    
+
 
     //Auth user can delete the post
-    public function delete(Post $post) {
+    public function delete(Post $post)
+    {
         if (auth()->user()->cannot('delete', $post)) {
             return " You can NOT delete this post according to Policy";
-        }
-        else
-        {
-        $post->delete();
-        return redirect('/profile/'.auth()->user()->username)->with('success', 'Post is Deleted Successfully.');
+        } else {
+            $post->delete();
+            return redirect('/profile/' . auth()->user()->username)->with('success', 'Post is Deleted Successfully.');
         }
     }
     //Show single post

@@ -32,6 +32,8 @@ Route::get('/post/{post}',[BlogController::class,'viewSinglePost']);
 Route::delete('/post/{post}',[BlogController::class,'delete'])->middleware('can:delete,post');
 Route::get('/post/{post}/edit',[BlogController::class,'editBlogpost'])->middleware('can:update,post');
 Route::put('/post/{post}/',[BlogController::class,'updateBlogpost'])->middleware('can:update,post');
+Route::get('/search/{term}/',[BlogController::class,'search'])->middleware('loggeduser');
+
 
 
 // Profile Controller Routes
