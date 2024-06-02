@@ -32,17 +32,51 @@ class ProfileController extends Controller
         ]);
     }
 
+    public function showprofile(User $user, Post $post) {
+        $this->getSharedData($user);
+        return view('profile-posts', ['posts' => $user->posts()->latest()->get()]);
+    }
+
+
     public function profileFollower(User $user){
        $this->getSharedData($user);
        return  view('profile-follower',[ 'followers' => $user->followers()->latest()->get() ]);
     
     }
 
+
     public function profileFollowing(User $user){
         $this->getSharedData($user);
         return  view('profile-following', ['following' => $user->FollowingTheseUsers()->latest()->get()] );
     
     }
+
+    // Profile Raw
+    public function showProfileRaw(User $user, Post $post) {
+        return response()->json([
+            'theHtml' => view('profile-posts-only', ['posts' => $user->posts()->latest()->get()])->render(),
+            'Pagetitle' => "{$user->username} Profile"
+        ]);
+    }
+
+    public function profileFollowerRaw(User $user) {
+        return response()->json([
+            'theHtml' => view('profile-follower-only', [
+                'followers' => $user->followers()->latest()->get()
+            ])->render(),
+            'Pagetitle' => "{$user->username}'s Follower List"
+        ]);
+    }
+
+    public function profileFollowingRaw(User $user) {
+        return response()->json([
+            'theHtml' => view('profile-following-only', [
+                'following' => $user->FollowingTheseUsers()->latest()->get()
+            ])->render(),
+            'Pagetitle' => "{$user->username}'s Following List"
+        ]);
+    }
+
     public function showAvatarForm(){
         return view('upload-avatar');
     }
@@ -74,10 +108,7 @@ class ProfileController extends Controller
     }
     
 
-    public function showprofile(User $user, Post $post) {
-        $this->getSharedData($user);
-        return view('profile-posts', ['posts' => $user->posts()->latest()->get()]);
-    }
+
     
 
 }

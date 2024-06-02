@@ -61,10 +61,20 @@ Route::get('/search/{term}/',[BlogController::class,'search'])->middleware('logg
 
 // Profile Controller Routes
 Route::get('profile/{user:username}', [ProfileController::class,'showprofile'])->middleware('loggeduser');
-Route::get('/manage-avatar', [ProfileController::class,'showAvatarForm'])->middleware('loggeduser');
-Route::post('/manage-avatar', [ProfileController::class,'storeAvatar'])->middleware('loggeduser');
 Route::get('/profile/{user:username}/follower',[ProfileController::class,'profileFollower'])->middleware('loggeduser');
 Route::get('/profile/{user:username}/following',[ProfileController::class,'profileFollowing'])->middleware('loggeduser');
+
+Route::middleware('cache.headers:public,max_age=20;etag')->group(function(){
+    Route::get('profile/{user:username}/raw', [ProfileController::class,'showprofileRaw'])->middleware('loggeduser');
+    Route::get('/profile/{user:username}/follower/raw',[ProfileController::class,'profileFollowerRaw'])->middleware('loggeduser');
+    Route::get('/profile/{user:username}/following/raw',[ProfileController::class,'profileFollowingRaw'])->middleware('loggeduser');
+
+});
+
+
+Route::get('/manage-avatar', [ProfileController::class,'showAvatarForm'])->middleware('loggeduser');
+Route::post('/manage-avatar', [ProfileController::class,'storeAvatar'])->middleware('loggeduser');
+
 
 // Gate for Admin Only
 Route::get('/admins-only', function(){ return view('admins-only'); })->middleware('can:adminonly');
