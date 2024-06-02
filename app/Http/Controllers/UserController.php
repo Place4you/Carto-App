@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Events\OurExampleEvent;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Http\Request;
@@ -43,10 +44,14 @@ class UserController extends Controller
            {
             // Genrating new session
             $request->session()->regenerate();
+            event(new OurExampleEvent(['username'=> auth()->user()->username , 'action' => 'Login' ]));
             return redirect('/')->with('success','You are Logged In Successfully.');
-            }else{
+            }
+            else{
             return redirect('/')->with('failure','Invalid info, Please Try Again');
             }
+
+
     }
 
 
@@ -70,6 +75,7 @@ class UserController extends Controller
 
     // User Logout Function
     public function  logout(){
+        event(new OurExampleEvent(['username'=> auth()->user()->username, 'action'=> 'Logout']));
         auth()->logout();
         return redirect('/')->with('success','You are Logged Out Successfully.');
     }

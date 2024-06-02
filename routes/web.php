@@ -1,12 +1,14 @@
 <?php
 
+use App\Events\ChatMessage;
+use Illuminate\Http\Request;
 use App\Http\Controllers\HOME;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FollowController;
 use App\Http\Controllers\ProfileController;
-
+use Symfony\Contracts\Service\Attribute\Required;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,6 +26,27 @@ Route::get('/', [ UserController::class, 'correctHomepage'])->name('login');
 Route::post('/register',[UserController::class,"register"]);
 Route::post('/login', [UserController::class,"login"])->middleware('guest');
 Route::post('/logout', [UserController::class,"logout"])->name('logout');
+
+Route::post('/send-chat-message', function(Request $request)
+    {
+        $formfields = $request->validate([
+            'textvalue' => 'required',
+        ]);
+        if(!trim(strip_tags($formfields['textvalue'])))
+        {
+            return response()->noContent();
+        };
+        
+        broadcast(new ChatMessage([
+            'username' => auth()->user()->username,
+            'avatar' => auth()->user()->avatar,
+            'textvalue' => $formfields['textvalue'],
+        ]))->toOthers();
+
+        return response()->noContent();
+    })->middleware('loggeduser');
+
+
 
 // Blog Controller Routes
 Route::get('/create-post',[BlogController::class,'showNewForm'])->middleware('loggeduser');
