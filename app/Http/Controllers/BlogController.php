@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use Illuminate\Http\Request;
+use App\Models\User;
+use App\Mail\NewEmail;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Mail;
 
 
 
@@ -70,7 +73,7 @@ class BlogController extends Controller
         return view('create-post');
     }
 
-    public function storeNewPost(Request $request)
+    public function storeNewPost(Request $request, User $user)
     {
 
         // get value and validate, also strip html tags
@@ -85,6 +88,10 @@ class BlogController extends Controller
 
 
         $newPost = Post::create($incomingFields);
+
+        Mail::to('sadi@gamil.com')->send(new NewEmail(['username' =>auth()->user()->username, 'title' =>$newPost->title]));
+
+
         return redirect("/post/{$newPost->id}")->with('success', 'New Post Uploaded Successfully.');
     }
 }
