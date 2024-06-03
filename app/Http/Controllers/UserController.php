@@ -13,12 +13,12 @@ class UserController extends Controller
     // Show Correct Homepage Function
     public function correctHomepage(){
         if(auth()->check()){
-            $posts = auth()->user()->feedposts()->latest()->paginate(6);
+            $posts = auth()->user()->feedposts()->with('user')->latest()->paginate(6);
 
                 if($posts->isEmpty()) {
                     return view("home-logged-in-no-results");
                 } else {
-                    return view("home-logged-in-results", ['posts' => $posts]);
+                    return view("home-logged-in-results", compact('posts'));
                 }
 
         }

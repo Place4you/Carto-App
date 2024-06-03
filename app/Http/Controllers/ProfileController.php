@@ -34,7 +34,7 @@ class ProfileController extends Controller
 
     public function showprofile(User $user, Post $post) {
         $this->getSharedData($user);
-        return view('profile-posts', ['posts' => $user->posts()->latest()->get()]);
+        return view('profile-posts', ['posts' => $user->posts()->with('user')->latest()->get()]);
     }
 
 
@@ -54,7 +54,7 @@ class ProfileController extends Controller
     // Profile Raw
     public function showProfileRaw(User $user, Post $post) {
         return response()->json([
-            'theHtml' => view('profile-posts-only', ['posts' => $user->posts()->latest()->get()])->render(),
+            'theHtml' => view('profile-posts-only', ['posts' => $user->posts()->with('user')->latest()->get()])->render(),
             'Pagetitle' => "{$user->username} Profile"
         ]);
     }
@@ -62,7 +62,7 @@ class ProfileController extends Controller
     public function profileFollowerRaw(User $user) {
         return response()->json([
             'theHtml' => view('profile-follower-only', [
-                'followers' => $user->followers()->latest()->get()
+                'followers' => $user->followers()->with('user')->latest()->get()
             ])->render(),
             'Pagetitle' => "{$user->username}'s Follower List"
         ]);
@@ -71,7 +71,7 @@ class ProfileController extends Controller
     public function profileFollowingRaw(User $user) {
         return response()->json([
             'theHtml' => view('profile-following-only', [
-                'following' => $user->FollowingTheseUsers()->latest()->get()
+                'following' => $user->FollowingTheseUsers()->with('user')->latest()->get()
             ])->render(),
             'Pagetitle' => "{$user->username}'s Following List"
         ]);
