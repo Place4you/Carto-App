@@ -13,14 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('follow', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-            $table->foreignId('user_id')->constrained();
-            $table->bigInteger('followeduser');
-            $table->foreign('followeduser')->references('id')->on('users');
-
-        });
+        if (!Schema::hasTable('follow')) {
+            Schema::create('follow', function (Blueprint $table) {
+                $table->id();
+                $table->timestamps();
+                $table->foreignId('user_id')->constrained();
+                $table->bigInteger('followeduser');
+                $table->foreign('followeduser')->references('id')->on('users');
+            });
+        }
     }
 
     /**
