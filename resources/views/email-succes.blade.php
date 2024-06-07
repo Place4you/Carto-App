@@ -1,5 +1,4 @@
 <div class="p-2 m-4 bolder strong">
-    <h1> Thanks {{ $username}}</h1>
-    <p class="italic">Thanks for posting {{$title}}</p>
-    
+    <h1>Post Deleted</h1>
+    <p class="italic">Your post titled "{{ $title }}" has been deleted.</p>
 </div>

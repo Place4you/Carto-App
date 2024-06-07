@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Jobs\SendNewEmail;
+use App\Jobs\SendDeletationNoti;
 use App\Models\Post;
 use App\Models\User;
+use App\Jobs\SendNewEmail;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Jobs\SendDeleteEmail;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Mail;
 
@@ -52,6 +54,13 @@ class BlogController extends Controller
     //Auth user can delete the post
     public function delete(Post $post)
     {
+        dispatch(new SendDeleteEmail(
+            [
+                'toSend'=> auth()->user()->email ,
+            'username' =>auth()->user()->username, 
+            'title' =>$post->title
+            ]));
+
         if (auth()->user()->cannot('delete', $post)) {
             return " You can NOT delete this post according to Policy";
         } else {

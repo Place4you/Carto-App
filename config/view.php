@@ -16,7 +16,10 @@ return [
     'paths' => [
         resource_path('views'),
     ],
-
+    
+    'view' => [
+        'compiled' => false, // Set to false in development
+    ],
     /*
     |--------------------------------------------------------------------------
     | Compiled View Path
@@ -32,5 +35,8 @@ return [
         'VIEW_COMPILED_PATH',
         realpath(storage_path('framework/views'))
     ),
+
+
+
 
 ];
