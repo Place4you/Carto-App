@@ -1,4 +1,4 @@
-# Carto v1.0
+# Carto v2.0
 ![Carto ](public/carto-thumnail.JPG)
 
 ## Overview
@@ -6,7 +6,9 @@
 Carto is a Laravel-based social media application that provides all the basic functionalities for users to interact with each other. With Carto, users can sign up, log in, create, edit, and delete posts, follow/unfollow other users, and explore profiles with post histories, follower lists, and following lists.
 
 ## Video Preview
-Check out the Detailed version of the project: [Youtube Link](https://bit.ly/4bxezn6)
+Check out the Detailed version of the project:
+VERISON 1.0 [Youtube Link](https://bit.ly/4bxezn6)
+VERISON 2.0 [Youtube Link](https://bit.ly/4bxezn6)
 
 
 ## Features
@@ -16,6 +18,11 @@ Check out the Detailed version of the project: [Youtube Link](https://bit.ly/4bx
 - User interaction: Follow and unfollow other users.
 - Profile pages: View profiles with user posts, follower lists, and following lists.
 - Authorization: Basic authorization functionalities such as middleware, policies, and type hinting.
+  # V2.0 FEATURES
+  - Search Functionality
+  - Chat Feature for all user
+  - Email integration for post notification
+  - Api calls for login, create & delete post
 
 ## Technologies Used
 
