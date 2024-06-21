@@ -43,6 +43,7 @@ To run Carto locally, follow these steps:
 5. Run `php artisan storage:link`
 6. Migrate the database: `php artisan migrate`
 7. Serve the application: `php artisan serve`
+8. Run the emial job:  `php artisan queue:work`
 
 ## Usage
 
