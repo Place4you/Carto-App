@@ -81,4 +81,24 @@ class UserController extends Controller
     }
 
         
+        //Api routes
+        public function  loginApi(Request $request){
+            $incomingfields = $request->validate(
+                [
+                'username' => ['required'],
+                'password' => ['required']
+                ]);
+    
+            if (auth()->attempt($incomingfields))
+               {
+                // Genrating new Tokken
+                $user = USER::where('username' , $incomingfields['username'])->first();
+                $token = $user->createToken('ourAppToken')->plainTextToken;
+                return "Congragulations! Here is your tokken = $token";
+                }
+                else{
+                    return 'Soory! Invalid Username or Password';
+                };
+            
+    }
 }

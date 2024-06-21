@@ -43,9 +43,11 @@ class DeleteEmail extends Mailable
     public function content()
     {
         return new Content(
-            view: 'delete-post-mail',
-            with: [ 'username'=> $this->data['username'], 'postTitle' =>$this->data['title'] ]
+        view :'delete-post-mail',
+        with: [ 'username'=> $this->data['username'], 
+        'postTitle' =>$this->data['title']]
         );
+
     }
 
     /**

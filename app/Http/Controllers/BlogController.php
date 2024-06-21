@@ -68,6 +68,25 @@ class BlogController extends Controller
             return redirect('/profile/' . auth()->user()->username)->with('success', 'Post is Deleted Successfully.');
         }
     }
+
+        //Auth user can delete the post via API
+        public function deletePostApi(Post $post)
+        {
+            dispatch(new SendDeleteEmail(
+                [
+                    'toSend'=> auth()->user()->email ,
+                'username' =>auth()->user()->username, 
+                'title' =>$post->title
+                ]));
+    
+            if (auth()->user()->cannot('delete', $post)) {
+                return " You can NOT delete this post according to Policy";
+            } else {
+                return 'The'. $post->title.' has beeen deleted';
+                $post->delete();
+            }
+        }
+
     //Show single post
     public function viewSinglePost(POST $post)
     {
@@ -101,5 +120,29 @@ class BlogController extends Controller
         dispatch(new SendNewEmail(['toSend'=> auth()->user()->email ,'username' =>auth()->user()->username, 'title' =>$newPost->title]));
 
         return redirect("/post/{$newPost->id}")->with('success', 'New Post Uploaded Successfully.');
+    }
+
+    //Post Through API
+    
+    public function storeNewBlogApi(Request $request, User $user)
+    {
+
+        // get value and validate, also strip html tags
+        $incomingFields = $request->validate([
+            'title' => 'required',
+            'body' => 'required',
+        ]);
+
+        $incomingFields['title'] = strip_tags($incomingFields['title']);
+        $incomingFields['body'] = strip_tags($incomingFields['body']);
+        $incomingFields['user_id'] = auth()->id();
+
+
+        $newPost = Post::create($incomingFields);
+        $uploaded = $newPost;
+
+        dispatch(new SendNewEmail(['toSend'=> auth()->user()->email ,'username' =>auth()->user()->username, 'title' =>$newPost->title]));
+
+        return "Congragulations! Your Post have been Uploaded, here is post id = {$uploaded->id}";
     }
 }
