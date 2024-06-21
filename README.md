@@ -8,7 +8,7 @@ Carto is a Laravel-based social media application that provides all the basic fu
 ## Video Preview
 Check out the Detailed version of the project:
 VERISON 1.0 [Youtube Link](https://bit.ly/4bxezn6)
-VERISON 2.0 [Youtube Link](https://bit.ly/4bxezn6)
+VERISON 2.0 [Youtube Link](https://bit.ly/4bhafaR)
 
 
 ## Features
